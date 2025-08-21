@@ -2,3 +2,7 @@
 __pycache__/
 *.pyc
 venv/
+
+python-tools/venv/
+python-tools/__pycache__/
+python-tools/data/
