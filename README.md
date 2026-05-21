@@ -16,6 +16,31 @@ This smartwatch prototype includes the following features:
 
 ---
 
+## System Architecture
+
+```mermaid
+flowchart LR
+    subgraph Device["Smartwatch Device"]
+        Sensors["Sensors<br/>Accelerometer<br/>PPG Sensor"]
+        MCU["MCU Firmware<br/>- Sensor acquisition<br/>- BLE / Serial communication<br/>- OLED updates"]
+        OLED["OLED Display"]
+    end
+
+    subgraph Laptop["Laptop / Python Side"]
+        Python["Python Processing Script<br/>- Parse raw data<br/>- Filter signals<br/>- Step count logic<br/>- Heart rate detection"]
+        Weather["Weather API"]
+    end
+
+    Sensors -->|Raw readings| MCU
+    MCU -->|BLE / Serial<br/>raw sensor data| Python
+    Weather -->|weather/time data| Python
+    Python -->|processed results| MCU
+    MCU -->|step count, heart rate, weather| OLED
+```
+
+---
+
+
 ## Getting Started
 
 ### Arduino Firmware
