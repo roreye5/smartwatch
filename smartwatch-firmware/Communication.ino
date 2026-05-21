@@ -1,20 +1,16 @@
 /*
- * Precompiler directive elegance: 0 == Serial, 1 == Bluetooth
+ * 0 == Serial, 1 == Bluetooth
  */
 
 #define USE_BT 0
 
-/*
- * This block allows us to use "Ser" throughout our codebase. 
- * This makes the code to be protocol-agnostic.
- * Whether using Bluetooth or USB Serial, we will reference it as Ser.
- */
+
 #if USE_BT
   #include "BluetoothSerial.h"
-  BluetoothSerial BTSerial;     // instantiate a BT object
-  #define Ser BTSerial          // substitute Ser for SerialBT
+  BluetoothSerial BTSerial;     
+  #define Ser BTSerial          
 #else
-  #define Ser Serial            // substitute Ser for Serial
+  #define Ser Serial            
 #endif
 
 /*
@@ -22,7 +18,7 @@
  */
 void setupCommunication() {
   #if USE_BT
-    Ser.begin("Roberto_ESP32"); // any unique name for BT
+    Ser.begin("Roberto_ESP32"); 
   #else
     Ser.begin(115200);
   #endif

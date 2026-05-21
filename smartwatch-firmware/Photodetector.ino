@@ -29,7 +29,7 @@ void setupPhotoSensor() {
 }
 
 /*
- * We are reading the IR signal here, but you should experiment with it.
+ * Reading the IR signal here.
  * The signal is negated because of the inverse relationship with blood
  * volume - a small reading means most absorption (peak of pulse).
  */

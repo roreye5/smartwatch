@@ -17,8 +17,8 @@ class Pedometer:
     __fs = 0           # Sampling rate in Hz
     __b = None         # Low-pass coefficients
     __a = None         # Low-pass coefficients
-    __thresh_low = 8 #1.45   # Threshold from Tutorial 2
-    __thresh_high = 14 # Threshold from Tutorial 2
+    __thresh_low = 8   
+    __thresh_high = 14 
 
     """
     Initialize the class instance

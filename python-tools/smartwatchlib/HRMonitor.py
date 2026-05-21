@@ -4,7 +4,6 @@ import smartwatchlib.DSP as filt
 import numpy as np
 import matplotlib as plt
 import pickle
-# Import for searching a directory
 import glob
 
 # The GMM Import
@@ -24,8 +23,8 @@ class HRMonitor:
     __num_samples = 0  # The length of data maintained
     __new_samples = 0  # How many new samples exist to process
     __fs = 0           # Sampling rate in Hz
-    __thresh = 0.6     # Threshold from Tutorial 2
-    __webcam_thresh = 0.75     # Threshold from Tutorial 2
+    __thresh = 0.6     
+    __webcam_thresh = 0.75     
     __gmm = None
 
     """
@@ -41,7 +40,7 @@ class HRMonitor:
 
     """
     Add new samples to the data buffer
-    Handles both integers and vectors!
+    Handles both integers and vectors
     """
     def add(self, t, x):
         if isinstance(t, np.ndarray):
@@ -58,7 +57,7 @@ class HRMonitor:
         self.__ppg.add(x)
 
     """
-    Compute the average heart rate over the peaks
+    Compute the average heart rate 
     """
     def compute_heart_rate(self, peaks):
         t = np.array(self.__time)
@@ -78,7 +77,6 @@ class HRMonitor:
         x = filt.gradient(x)
         x = filt.moving_average(x, 3)
         x = filt.normalize(x)
-
 
 
         # Store the filtered data
@@ -186,7 +184,7 @@ class HRMonitor:
     def __get_hr(self, filepath, num_samples, fs):
         count = int(filepath.split("_")[-1].split(".")[0])
         seconds = num_samples / fs
-        return count / seconds * 60 # 60s in a minute
+        return count / seconds * 60 
 
     # Estimate the sampling rate from the time vector
     def __estimate_fs(self, times):
@@ -199,12 +197,11 @@ class HRMonitor:
         #print('peaks: ', peaks)     #for testing
         #print('peak count: ', count) #for testing
         seconds = num_samples / fs
-        hr = count / seconds * 60 # 60s in a minute
+        hr = count / seconds * 60 
         return hr, peaks
 
-    # Filter the signal (as in the prior lab)
+    # Filter the signal 
     def __process_ppg(self, x):
-        # new samples only?
 
         x = filt.detrend(x, 25)
         x = filt.moving_average(x, 5)

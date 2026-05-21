@@ -9,9 +9,9 @@ import numpy as np
 class IdleDetector:
     __l1 = None        # CircularList containing L1-norm
     __filtered = None  # CircularList containing filtered signal
-    __thresh_low = 1.45   # Threshold from Tutorial 2
-    __thresh_high = 14 # Threshold from Tutorial 2
-    __new_samples = 0  # How many new samples exist to process
+    __thresh_low = 1.45   
+    __thresh_high = 14 
+    __new_samples = 0  # new samples to process
 
     # constructor:
     #def __init__(self, port, baudrate, num_samples=250, refresh_time=0.1, sample_size=100, top_threshold = 1972, btm_threshold = 1964.5, last_state =0, data = None):
@@ -28,7 +28,7 @@ class IdleDetector:
         self.myList = CircularList([], num_samples)
         self.top_threshold = top_threshold
         self.btm_threshold = btm_threshold
-        self.active = 0     # 0=false & 1=true
+        self.active = 0    
         self.current_state = 0     #0=idle & 1=active
         self.last_state = last_state  
         #self.comms = Communication(port, baudrate)
@@ -53,8 +53,8 @@ class IdleDetector:
         x = np.array(self.__l1[ -self.__new_samples: ])
 
         # Filter the signal (detrend, LP, MA, etc…)
-        ma = filt.moving_average(x, 15)         # Compute Moving Average
-        dt = filt.detrend(ma)                  # Detrend the Signal
+        ma = filt.moving_average(x, 15)         
+        dt = filt.detrend(ma)                  
         bl, al = filt.create_filter(3, 2, "lowpass", 50)   # Low-pass Filter Design
         lp = filt.filter(bl, al, dt)                       # Low-pass Filter Signal
         grad = filt.gradient(lp)
