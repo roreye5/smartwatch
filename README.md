@@ -21,14 +21,14 @@ This smartwatch prototype includes the following features:
 ```mermaid
 flowchart LR
     subgraph Device["Smartwatch Device"]
-        Sensors["Sensors<br/>Accelerometer<br/>PPG Sensor"]
-        MCU["MCU Firmware<br/>- Sensor acquisition<br/>- BLE / Serial communication<br/>- OLED updates"]
-        OLED["OLED Display"]
+        Sensors[<u><b>Sensors</b></u><br/>Accelerometer<br/>PPG Sensor]
+        MCU[<u><b>MCU Firmware</b></u><br/>- Sensor acquisition<br/>- BLE / Serial communication<br/>- OLED updates]
+        OLED["<u><b>OLED Display</b></u><br/>- Time/Date<br/>- Step count<br/>- Heart rate<br/>- Weather"]
     end
 
     subgraph Laptop["Laptop / Python Side"]
-        Python["Python Processing Script<br/>- Parse raw data<br/>- Filter signals<br/>- Step count logic<br/>- Heart rate detection"]
-        Weather["Weather API"]
+        Python["<u><b>Python Processing Script</b></u><br/>- Parse raw data<br/>- Filter signals<br/>- Step count logic<br/>- Heart rate detection"]
+        Weather["<u><b>Weather API</b></u><br/>- Fetch weather data<br/>- Provide time info"]
     end
 
     Sensors -->|Raw readings| MCU
